@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: docker build . -t groundhog2k/distroless-azul-jre
+      - run: docker build . -t groundhog2k/distroless-azul-jre:verify
       - uses: Azure/container-scan@v0
         with:
-          image-name: groundhog2k/distroless-azul-jre
+          image-name: groundhog2k/distroless-azul-jre:verify
