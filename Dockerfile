@@ -1,3 +1,5 @@
+ARG DEBIAN_BASE="11-slim"
+
 FROM buildpack-deps:buster-curl AS builder
 
 # Target Azul java version in the docker image
@@ -10,8 +12,10 @@ RUN mkdir -p /usr/share/jre \
     && curl -fsSL -o /tmp/jre.tar.gz ${ZULU_BASE_URL}/${ZULU_VERSION}-linux_x64.tar.gz \
     && tar -xzf /tmp/jre.tar.gz -C /usr/share/jre --strip-components=1 \
     && chown root:root -R /usr/share/jre
+RUN mkdir /symlink \
+    && ln -s /usr/share/jre/bin/java /symlink/java
 
-FROM debian:11-slim AS debian
+FROM debian:${DEBIAN_BASE} AS debian
 RUN apt-get update && apt-get dist-upgrade -y
 
 FROM scratch AS distroless
@@ -28,7 +32,9 @@ COPY --from=debian /usr/share/gdb /usr/share/gdb
 FROM scratch
 COPY --from=distroless / /
 COPY --from=builder /usr/share/jre /usr/share/jre
+COPY --from=builder /symlink /usr/bin
 
 ENV LC_ALL=C.UTF-8 JAVA_HOME=/usr/share/jre
 USER 1001
-ENTRYPOINT [ "/usr/share/jre/bin/java" ]
+
+ENTRYPOINT [ "/usr/bin/java" ]
