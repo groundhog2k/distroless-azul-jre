@@ -12,6 +12,7 @@ jobs:
       - name: Set environment variables
         run: |
           source ./version.cfg
+          export ZULU_VERSION DEBIAN_VERSION
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1      
       - name: Login to the container registry
