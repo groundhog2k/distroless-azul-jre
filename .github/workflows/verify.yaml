@@ -10,6 +10,7 @@ jobs:
         run: |
           source ./version.cfg
           export ZULU_VERSION DEBIAN_VERSION
+          export
       - name: Build image
         run: docker build . -t groundhog2k/distroless-azul-jre:verify --build-arg ZULU_VERSION=$ZULU_VERSION --build-arg DEBIAN_VERSION=$DEBIAN_VERSION
       - name: Scan image
