@@ -9,7 +9,11 @@ jobs:
       - name: Set environment variables
         run: |
           source ./version.cfg
-      - run: docker build . -t groundhog2k/distroless-azul-jre:verify --build-arg ZULU_VERSION=$ZULU_VERSION --build-arg DEBIAN_VERSION=$DEBIAN_VERSION
-      - uses: Azure/container-scan@v0
+      - name: Build image
+        run: |
+          printenv
+          docker build . -t groundhog2k/distroless-azul-jre:verify --build-arg ZULU_VERSION=$ZULU_VERSION --build-arg DEBIAN_VERSION=$DEBIAN_VERSION
+      - name: Scan image
+        uses: Azure/container-scan@v0
         with:
           image-name: groundhog2k/distroless-azul-jre:verify
