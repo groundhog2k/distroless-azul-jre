@@ -24,7 +24,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: groundhog2k/distroless-azul-jre:11.0.14, groundhog2k/distroless-azul-jre:11, groundhog2k/distroless-azul-jre:latest
+          tags: groundhog2k/distroless-azul-jre:11.0.13, groundhog2k/distroless-azul-jre:11, groundhog2k/distroless-azul-jre:latest
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}

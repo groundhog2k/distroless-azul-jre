@@ -17,7 +17,7 @@ RUN rm rootfs.tar.xz
 FROM buildpack-deps:bullseye-curl AS jre
 
 # Target Azul java version in the docker image
-ARG ZULU_VERSION="zulu11.54.23-ca-jre11.0.14"
+ARG ZULU_VERSION="zulu11.52.13-ca-jre11.0.13"
 # Base URL for the download
 ARG ZULU_BASE_URL="https://cdn.azul.com/zulu/bin"
 
