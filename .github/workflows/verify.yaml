@@ -18,3 +18,4 @@ jobs:
           image: "groundhog2k/distroless-azul-jre:verify"
           severity-cutoff: "low"
           fail-build: false
+          acs-report-enable: false
