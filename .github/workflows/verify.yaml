@@ -12,7 +12,17 @@ jobs:
           image-ref: 'groundhog2k/distroless-azul-jre:verify'
           format: 'table'
           ignore-unfixed: true
-      - name: Scan image with anchore grype
+      - name: Scan image with grype
         uses: anchore/scan-action@v3
+        id: scangrype
         with:
           image: "groundhog2k/distroless-azul-jre:verify"
+          severity-cutoff: "low"
+          fail-build: false
+          acs-report-enable: true
+      - name: Inspect action SARIF report
+        run: cat ${{ steps.scangrype.outputs.sarif }}
+      - name: upload Anchore scan SARIF report
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: ${{ steps.scangrype.outputs.sarif }}
