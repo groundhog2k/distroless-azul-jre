@@ -6,6 +6,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: docker build . -t groundhog2k/distroless-azul-jre:verify
-      - uses: Azure/container-scan@v0
+      - name: Scan image with trivy
+        uses: aquasecurity/trivy-action@master
         with:
-          image-name: groundhog2k/distroless-azul-jre:verify
+          image-ref: 'groundhog2k/distroless-azul-jre:verify'
+          format: 'table'
+          ignore-unfixed: true
+      - name: Scan image with anchore grype
+        uses: anchore/scan-action@v3
+        with:
+          image: "groundhog2k/distroless-azul-jre:verify"

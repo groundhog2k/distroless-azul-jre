@@ -1,7 +1,7 @@
 FROM buildpack-deps:bullseye-curl AS distroless
 
 # Debian rootfs download
-ARG BULLSEYE_ROOTFS="https://github.com/debuerreotype/docker-debian-artifacts/raw/de5fb2efd50a009baa2aaccd2b7874ec728bd7a9/bullseye/slim/rootfs.tar.xz"
+ARG BULLSEYE_ROOTFS="https://github.com/debuerreotype/docker-debian-artifacts/raw/b3d13cfc071091e16812b6147f26e822b3a8ff92/bullseye/slim/rootfs.tar.xz"
 # ARG BOOKWORM_ROOTFS="https://github.com/debuerreotype/docker-debian-artifacts/raw/de5fb2efd50a009baa2aaccd2b7874ec728bd7a9/bookworm/slim/rootfs.tar.xz"
 
 WORKDIR /debianroot
@@ -17,7 +17,7 @@ RUN rm rootfs.tar.xz
 FROM buildpack-deps:bullseye-curl AS jre
 
 # Target Azul java version in the docker image
-ARG ZULU_VERSION="zulu11.54.23-ca-jre11.0.14"
+ARG ZULU_VERSION="zulu11.54.25-ca-jre11.0.14"
 # Base URL for the download
 ARG ZULU_BASE_URL="https://cdn.azul.com/zulu/bin"
 
