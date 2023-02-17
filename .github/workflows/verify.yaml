@@ -4,8 +4,12 @@ jobs:
   verify-image:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - run: docker build . -t groundhog2k/distroless-azul-jre:verify
+      - name: initenv
+        run: echo "javaversion=zulu17.40.19-ca-jdk17.0.6" >> $GITHUB_ENV
+      - name: checkitout
+        uses: actions/checkout@master
+      - name: build
+        run: docker build . -t groundhog2k/distroless-azul-jre:verify --build-arg ZULU_BASE_VERSION=${{ env.javaversion }}
       - name: Scan image with trivy
         uses: aquasecurity/trivy-action@master
         with:
