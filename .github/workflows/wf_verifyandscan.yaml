@@ -13,7 +13,7 @@ jobs:
       - name: Checkout pull request
         uses: actions/checkout@master
       - name: Build a temporary image for verification
-        run: docker build . -t groundhog2k/distroless-azul-jre:${{ inputs.zulu_version }} --build-arg ROOTFS_VERSION=${{ inputs.zulu_version }}
+        run: docker build . -t groundhog2k/distroless-azul-jre:${{ inputs.zulu_version }} --build-arg ZULU_VERSION=${{ inputs.zulu_version }}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
