@@ -1,7 +1,7 @@
 FROM buildpack-deps:bullseye-curl AS jre
 
 # Target Azul java version in the docker image
-ARG ZULU_VERSION="zulu11.62.17-ca-jre11.0.18"
+ARG ZULU_VERSION
 # Base URL for the download
 ARG ZULU_BASE_URL="https://cdn.azul.com/zulu/bin"
 
