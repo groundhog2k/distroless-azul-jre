@@ -6,14 +6,12 @@ on:
 jobs:
   build-and-push-11:
     secrets: inherit
-    uses: ./.github/workflows/wf_buildandpush.yaml
-    with:
-      zulu_version: "zulu11.62.17-ca-jre11.0.18"
-      tags: "groundhog2k/distroless-azul-jre:11, groundhog2k/distroless-azul-jre:11.0.18"
+    uses: ./.github/workflows/zulu11.yaml
 
   build-and-push-17:
     secrets: inherit
-    uses: ./.github/workflows/wf_buildandpush.yaml
-    with:
-      zulu_version: "zulu17.40.19-ca-jdk17.0.6"
-      tags: "groundhog2k/distroless-azul-jre:17, groundhog2k/distroless-azul-jre:17.0.6"
+    uses: ./.github/workflows/zulu17.yaml
+
+  build-and-push-21:
+    secrets: inherit
+    uses: ./.github/workflows/zulu21.yaml

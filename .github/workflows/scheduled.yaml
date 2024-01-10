@@ -4,27 +4,14 @@ on:
     - cron: "0 1 * * 1"
 
 jobs:
-  verify-and-scan-11:
-    permissions:
-      security-events: write
-    uses: ./.github/workflows/wf_verifyandscan.yaml
-    with:
-      zulu_version: "zulu11.64.19-ca-jre11.0.19"
   build-and-push-11:
     secrets: inherit
-    uses: ./.github/workflows/wf_buildandpush.yaml
-    with:
-      zulu_version: "zulu11.64.19-ca-jre11.0.19"
-      tags: "groundhog2k/distroless-azul-jre:11, groundhog2k/distroless-azul-jre:11.0.19"
-  verify-and-scan-17:
-    permissions:
-      security-events: write
-    uses: ./.github/workflows/wf_verifyandscan.yaml
-    with:
-      zulu_version: "zulu17.42.19-ca-jdk17.0.7"
+    uses: ./.github/workflows/zulu11.yaml
+
   build-and-push-17:
     secrets: inherit
-    uses: ./.github/workflows/wf_buildandpush.yaml
-    with:
-      zulu_version: "zulu17.42.19-ca-jdk17.0.7"
-      tags: "groundhog2k/distroless-azul-jre:17, groundhog2k/distroless-azul-jre:17.0.7"
+    uses: ./.github/workflows/zulu17.yaml
+
+  build-and-push-21:
+    secrets: inherit
+    uses: ./.github/workflows/zulu21.yaml

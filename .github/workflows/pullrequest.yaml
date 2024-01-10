@@ -9,11 +9,18 @@ jobs:
       security-events: write
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      zulu_version: "zulu11.62.17-ca-jre11.0.18"
+      zulu_version: "zulu11.68.17-ca-jre11.0.21"
 
   verify-and-scan-17:
     permissions:
       security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      zulu_version: "zulu17.40.19-ca-jdk17.0.6"
+      zulu_version: "zulu17.46.19-ca-jdk17.0.9"
+
+  verify-and-scan-21:
+    permissions:
+      security-events: write  
+    uses: ./.github/workflows/wf_verifyandscan.yaml
+    with:
+      zulu_version: "zulu21.30.15-ca-jdk21.0.1"

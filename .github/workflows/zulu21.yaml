@@ -1,0 +1,11 @@
+name: Azul Zulu JRE 21
+on:
+  workflow_call:
+
+jobs:
+  build-and-push-21:
+    secrets: inherit
+    uses: ./.github/workflows/wf_buildandpush.yaml
+    with:
+      zulu_version: "zulu21.30.15-ca-jdk21.0.1"
+      tags: "groundhog2k/distroless-azul-jre:21, groundhog2k/distroless-azul-jre:21.0.1"
