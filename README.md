@@ -26,7 +26,7 @@ Simplest scenario is to create an own image by using this image as a base and ad
 An example Dockerfile would look like this:
 
 ```Dockerfile
-FROM distroless-azul-jre:11
+FROM distroless-azul-jre:25
 WORKDIR /usr/app
 COPY myjava-application.jar /usr/app/myjava-application.jar
 CMD [ "-jar", "/usr/app/myjava-application.jar" ]

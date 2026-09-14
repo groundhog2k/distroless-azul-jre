@@ -1,4 +1,4 @@
-FROM buildpack-deps:bookworm-curl AS jre
+FROM buildpack-deps:trixie-curl AS jre
 
 # Target Azul java version in the docker image
 ARG ZULU_VERSION
@@ -14,7 +14,7 @@ RUN mkdir -p /usr/share/jre \
 RUN mkdir -p /symlink \
     && ln -s /usr/share/jre/bin/java /symlink/java
 
-FROM groundhog2k/distroless-base-image:bookworm
+FROM groundhog2k/distroless-base-image:trixie
 # copy unpacked JRE
 COPY --from=jre /usr/share/jre /usr/share/jre
 # copy symlink

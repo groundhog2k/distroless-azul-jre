@@ -15,3 +15,7 @@ jobs:
   build-and-push-21:
     secrets: inherit
     uses: ./.github/workflows/zulu21.yaml
+
+  build-and-push-25:
+    secrets: inherit
+    uses: ./.github/workflows/zulu25.yaml
