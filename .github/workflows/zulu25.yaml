@@ -7,5 +7,5 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/wf_buildandpush.yaml
     with:
-      zulu_version: "zulu25.36.205-ca-jdk25.0.4"
-      tags: "groundhog2k/distroless-azul-jre:25, groundhog2k/distroless-azul-jre:25.0.4"
+      zulu_version: "zulu25.36.205-ca-jdk25.0.4.1"
+      tags: "groundhog2k/distroless-azul-jre:25, groundhog2k/distroless-azul-jre:25.0.4.1"
